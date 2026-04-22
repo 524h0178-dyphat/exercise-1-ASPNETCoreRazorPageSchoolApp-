@@ -1,10 +1,10 @@
-name: Docker Image CI
+name: Docker Image CI - Lab07 Razor Pages
 
 on:
   push:
-    branches: ["master"] # Hoặc "master" tùy thuộc vào nhánh chính của bạn
+    branches: ["main", "master"]
   pull_request:
-    branches: ["master"]
+    branches: ["main", "master"]
 
 jobs:
   build:
@@ -26,7 +26,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./SchoolAppCoreMVC/Dockerfile # Chỉ đúng đường dẫn file Dockerfile
+          # Đường dẫn đã được trỏ thẳng vào thư mục SchoolAppCore
+          file: ./SchoolAppCore/Dockerfile
           push: true
-          # Thay <tên_đăng_nhập> bằng username Docker Hub thực tế của bạn
-          tags: <tên_đăng_nhập>/schoolappcoremvc:latest
+          # Đẩy lên Docker Hub với tên image là schoolapp-razor
+          tags: ${{ secrets.DOCKER_USERNAME }}/schoolapp-razor:dev
