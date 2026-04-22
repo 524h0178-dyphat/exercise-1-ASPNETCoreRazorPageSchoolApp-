@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           # Đường dẫn đã được trỏ thẳng vào thư mục SchoolAppCore
-          file: ./SchoolAppCore/Dockerfile
+          file: ./Dockerfile
           push: true
           # Đẩy lên Docker Hub với tên image là schoolapp-razor
           tags: ${{ secrets.DOCKER_USERNAME }}/schoolapp-razor:dev
